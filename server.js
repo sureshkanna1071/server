@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser")
 const cors = require("cors");
+let port = process.env.port || 3699
 const Mongo = require("mongodb")
 let {connectDB, getData, postData, updateData, deleteData, postMultipleData} = require("./controller/dbController")
 
@@ -168,7 +169,7 @@ app.put("/order", async(req, res) => {
     res.send({"message": "Order Updated successfully", "response": output});
 })
 
-app.listen("3699", () => {
+app.listen(port, () => {
     connectDB();
     console.log("server started")
 })
